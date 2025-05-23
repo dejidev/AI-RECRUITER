@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, BarChart3, Clock, DollarSign, FileText, Mail, Search, Users } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import img1 from "../assets/img1.jpg"
 
 
 const LandingPage = () => {
+
   return (
-
-
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1">
@@ -36,7 +36,7 @@ const LandingPage = () => {
                 <div className="flex justify-center">
                   <div className="relative w-full max-w-[500px] aspect-video rounded-xl overflow-hidden shadow-xl">
                     <img
-                      src="/placeholder.svg?height=500&width=800"
+                      src={img1}
                       alt="AI Recruiter Dashboard Preview"
                       className="object-cover w-full h-full"
                     />
