@@ -20,7 +20,7 @@ export default function DashboardPage() {
                 <FileText className="mr-2 h-4 w-4" />
                 Export
               </Button>
-              <Button className="bg-teal-600 hover:bg-teal-700">
+              <Button className="bg-blue-600 hover:bg-blue-700">
                 <Search className="mr-2 h-4 w-4" />
                 New Job
               </Button>
@@ -51,7 +51,7 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">14 days</div>
-                <p className="text-xs text-green-500">-8 days from industry average</p>
+                <p className="text-xs text-blue-500">-8 days from industry average</p>
               </CardContent>
             </Card>
             <Card>
@@ -60,7 +60,7 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">$2,450</div>
-                <p className="text-xs text-green-500">-42% from industry average</p>
+                <p className="text-xs text-blue-500">-42% from industry average</p>
               </CardContent>
             </Card>
           </div>
@@ -75,7 +75,7 @@ export default function DashboardPage() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 rounded-full bg-teal-500" />
+                        <div className="h-4 w-4 rounded-full bg-blue-500" />
                         <span className="text-sm font-medium">Applied</span>
                       </div>
                       <span className="text-sm font-medium">156</span>
@@ -202,7 +202,7 @@ export default function DashboardPage() {
                   <CardContent className="p-0">
                     <div className="divide-y">
                       <div className="flex items-center gap-4 p-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 text-teal-600">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                           <Mail className="h-5 w-5" />
                         </div>
                         <div className="flex-1 space-y-1">
@@ -266,7 +266,7 @@ export default function DashboardPage() {
                         <div className="text-xs text-gray-500">Tomorrow</div>
                       </div>
                       <div className="flex items-center gap-4 p-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 text-teal-600">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                           <Mail className="h-5 w-5" />
                         </div>
                         <div className="flex-1 space-y-1">

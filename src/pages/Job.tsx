@@ -46,7 +46,7 @@ export default function Job() {
                           <Upload className="h-4 w-4" />
                           Upload JD File
                         </Button>
-                        <Button className="bg-teal-600 hover:bg-teal-700">Save Job Description</Button>
+                        <Button className="bg-blue-600 hover:bg-blue-700">Save Job Description</Button>
                       </div>
                     </div>
                   </CardContent>
@@ -62,18 +62,18 @@ export default function Job() {
                     <div className="space-y-4">
                       <div className="rounded-lg border-2 border-dashed border-gray-200 p-6 text-center">
                         <div className="mx-auto flex max-w-[180px] flex-col items-center justify-center">
-                          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+                          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-blue-600">
                             <FileText className="h-8 w-8" />
                           </div>
                           <h3 className="mt-4 text-lg font-semibold">Upload Resumes</h3>
                           <p className="mt-2 text-sm text-gray-500">Drag and drop resume files or click to browse</p>
-                          <Button className="mt-4 bg-teal-600 hover:bg-teal-700">Select Files</Button>
+                          <Button className="mt-4 bg-blue-600 hover:bg-blue-700">Select Files</Button>
                         </div>
                       </div>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between text-sm">
                           <span className="font-medium">Uploaded Resumes (3)</span>
-                          <Button variant="ghost" size="sm" className="h-auto p-0 text-teal-600">
+                          <Button variant="ghost" size="sm" className="h-auto p-0 text-blue-600">
                             Clear All
                           </Button>
                         </div>
@@ -107,7 +107,7 @@ export default function Job() {
                           </div>
                         </div>
                       </div>
-                      <Button className="w-full bg-teal-600 hover:bg-teal-700">Match Candidates</Button>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700">Match Candidates</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -126,7 +126,7 @@ export default function Job() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 text-teal-600">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                             <span className="text-sm font-bold">JS</span>
                           </div>
                           <div>
@@ -135,7 +135,7 @@ export default function Job() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-sm font-medium text-teal-600">92% Match</div>
+                          <div className="text-sm font-medium text-blue-600">92% Match</div>
                           <p className="text-xs text-gray-500">Top candidate</p>
                         </div>
                       </div>
@@ -167,7 +167,7 @@ export default function Job() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 text-teal-600">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                             <span className="text-sm font-bold">SJ</span>
                           </div>
                           <div>
@@ -176,7 +176,7 @@ export default function Job() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-sm font-medium text-teal-600">87% Match</div>
+                          <div className="text-sm font-medium text-blue-600">87% Match</div>
                           <p className="text-xs text-gray-500">Strong candidate</p>
                         </div>
                       </div>
@@ -208,7 +208,7 @@ export default function Job() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 text-teal-600">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                             <span className="text-sm font-bold">MC</span>
                           </div>
                           <div>
@@ -217,7 +217,7 @@ export default function Job() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-sm font-medium text-teal-600">74% Match</div>
+                          <div className="text-sm font-medium text-blue-600">74% Match</div>
                           <p className="text-xs text-gray-500">Potential candidate</p>
                         </div>
                       </div>
@@ -249,7 +249,7 @@ export default function Job() {
                     </div>
                     <div className="flex justify-between">
                       <Button variant="outline">Export Results</Button>
-                      <Button className="bg-teal-600 hover:bg-teal-700">Send Feedback Emails</Button>
+                      <Button className="bg-blue-600 hover:bg-blue-700">Send Feedback Emails</Button>
                     </div>
                   </div>
                 </CardContent>

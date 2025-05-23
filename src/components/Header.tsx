@@ -20,7 +20,7 @@ export default function Header() {
         <header className="border-b">
             <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
                 <div className="flex items-center gap-2">
-                    <Search className="h-6 w-6 text-teal-600" />
+                    <Search className="h-6 w-6 text-blue-600" />
                     <span className="text-xl font-bold">AI Recruiter</span>
                 </div>
                 <nav className="hidden md:flex gap-6">
@@ -44,7 +44,7 @@ export default function Header() {
                         </Button>
                     </Link>
 
-                    <Button size="sm" className="bg-teal-600 hover:bg-teal-700">
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
                         Request Demo
                     </Button>
                 </div>

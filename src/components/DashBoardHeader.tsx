@@ -19,7 +19,7 @@ export default function DashBoardHeader() {
                 <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
                     <div className="flex items-center gap-2">
                         <Link to="/" className="flex items-center gap-2">
-                            <Search className="h-6 w-6 text-teal-600" />
+                            <Search className="h-6 w-6 text-blue-600" />
                             <span className="text-xl font-bold">AI Recruiter</span>
                         </Link>
                     </div>

@@ -12,7 +12,7 @@ const LandingPage = () => {
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-50 to-teal-50">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-slate-50 to-blue-50">
           <div className="container mx-auto px-4 md:px-6">
               <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
                 <div className="flex flex-col justify-center space-y-4">
@@ -26,7 +26,7 @@ const LandingPage = () => {
                     </p>
                   </div>
                   <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                    <Button className="bg-teal-600 hover:bg-teal-700">
+                    <Button className="bg-blue-600 hover:bg-blue-700">
                       Get Started
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -59,7 +59,7 @@ const LandingPage = () => {
               <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
                 <Card>
                   <CardHeader className="pb-2">
-                    <FileText className="h-6 w-6 text-teal-600 mb-2" />
+                    <FileText className="h-6 w-6 text-blue-600 mb-2" />
                     <CardTitle>Resume Parsing & Analysis</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -70,7 +70,7 @@ const LandingPage = () => {
                 </Card>
                 <Card>
                   <CardHeader className="pb-2">
-                    <Search className="h-6 w-6 text-teal-600 mb-2" />
+                    <Search className="h-6 w-6 text-blue-600 mb-2" />
                     <CardTitle>Job Description Matching</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -82,7 +82,7 @@ const LandingPage = () => {
                 </Card>
                 <Card>
                   <CardHeader className="pb-2">
-                    <BarChart3 className="h-6 w-6 text-teal-600 mb-2" />
+                    <BarChart3 className="h-6 w-6 text-blue-600 mb-2" />
                     <CardTitle>Performance-Based Scoring</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -93,7 +93,7 @@ const LandingPage = () => {
                 </Card>
                 <Card>
                   <CardHeader className="pb-2">
-                    <Mail className="h-6 w-6 text-teal-600 mb-2" />
+                    <Mail className="h-6 w-6 text-blue-600 mb-2" />
                     <CardTitle>Personalized Feedback</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -104,7 +104,7 @@ const LandingPage = () => {
                 </Card>
                 <Card>
                   <CardHeader className="pb-2">
-                    <BarChart3 className="h-6 w-6 text-teal-600 mb-2" />
+                    <BarChart3 className="h-6 w-6 text-blue-600 mb-2" />
                     <CardTitle>Analytics Dashboard</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -115,7 +115,7 @@ const LandingPage = () => {
                 </Card>
                 <Card>
                   <CardHeader className="pb-2">
-                    <Users className="h-6 w-6 text-teal-600 mb-2" />
+                    <Users className="h-6 w-6 text-blue-600 mb-2" />
                     <CardTitle>Bias Mitigation</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -140,7 +140,7 @@ const LandingPage = () => {
               </div>
               <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
                 <div className="flex flex-col items-center text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 text-teal-600 mb-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600 mb-4">
                     <span className="text-xl font-bold">1</span>
                   </div>
                   <h3 className="text-xl font-bold">Upload Resumes</h3>
@@ -149,14 +149,14 @@ const LandingPage = () => {
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 text-teal-600 mb-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600 mb-4">
                     <span className="text-xl font-bold">2</span>
                   </div>
                   <h3 className="text-xl font-bold">AI Analysis</h3>
                   <p className="mt-2 text-gray-500">Our AI analyzes and matches candidates to your job descriptions.</p>
                 </div>
                 <div className="flex flex-col items-center text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 text-teal-600 mb-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600 mb-4">
                     <span className="text-xl font-bold">3</span>
                   </div>
                   <h3 className="text-xl font-bold">Review Rankings</h3>
@@ -165,7 +165,7 @@ const LandingPage = () => {
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 text-teal-600 mb-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600 mb-4">
                     <span className="text-xl font-bold">4</span>
                   </div>
                   <h3 className="text-xl font-bold">Automated Feedback</h3>
@@ -187,19 +187,19 @@ const LandingPage = () => {
               </div>
               <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3 mt-12">
                 <div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm border">
-                  <Clock className="h-12 w-12 text-teal-600 mb-4" />
+                  <Clock className="h-12 w-12 text-blue-600 mb-4" />
                   <h3 className="text-2xl font-bold">3x Faster</h3>
                   <p className="mt-2 text-gray-500">
                     Reduce your recruitment cycle time by up to threefold through automation.
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm border">
-                  <DollarSign className="h-12 w-12 text-teal-600 mb-4" />
+                  <DollarSign className="h-12 w-12 text-blue-600 mb-4" />
                   <h3 className="text-2xl font-bold">50% Cost Reduction</h3>
                   <p className="mt-2 text-gray-500">Lower hiring costs significantly with AI-driven candidate ranking.</p>
                 </div>
                 <div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm border">
-                  <Users className="h-12 w-12 text-teal-600 mb-4" />
+                  <Users className="h-12 w-12 text-blue-600 mb-4" />
                   <h3 className="text-2xl font-bold">Better Candidates</h3>
                   <p className="mt-2 text-gray-500">
                     Improve candidate quality and reduce mis-hires with data-driven insights.
@@ -304,7 +304,7 @@ const LandingPage = () => {
                     <ul className="space-y-3">
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -316,7 +316,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -328,7 +328,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -340,7 +340,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -353,12 +353,12 @@ const LandingPage = () => {
                     </ul>
                   </CardContent>
                   <div className="p-6 pt-0 mt-auto">
-                    <Button className="w-full bg-teal-600 hover:bg-teal-700">Get Started</Button>
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700">Get Started</Button>
                   </div>
                 </Card>
-                <Card className="flex flex-col border-teal-600 shadow-lg">
+                <Card className="flex flex-col border-blue-600 shadow-lg">
                   <CardHeader>
-                    <div className="px-3 py-1 text-xs font-bold uppercase tracking-wider text-white bg-teal-600 rounded-full w-fit mb-2">
+                    <div className="px-3 py-1 text-xs font-bold uppercase tracking-wider text-white bg-blue-600 rounded-full w-fit mb-2">
                       Popular
                     </div>
                     <CardTitle>Professional</CardTitle>
@@ -371,7 +371,7 @@ const LandingPage = () => {
                     <ul className="space-y-3">
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -383,7 +383,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -395,7 +395,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -407,7 +407,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -419,7 +419,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -432,7 +432,7 @@ const LandingPage = () => {
                     </ul>
                   </CardContent>
                   <div className="p-6 pt-0 mt-auto">
-                    <Button className="w-full bg-teal-600 hover:bg-teal-700">Get Started</Button>
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700">Get Started</Button>
                   </div>
                 </Card>
                 <Card className="flex flex-col">
@@ -446,7 +446,7 @@ const LandingPage = () => {
                     <ul className="space-y-3">
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -458,7 +458,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -470,7 +470,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -482,7 +482,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -494,7 +494,7 @@ const LandingPage = () => {
                       </li>
                       <li className="flex items-center">
                         <svg
-                          className="h-5 w-5 text-teal-600 mr-2"
+                          className="h-5 w-5 text-blue-600 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -507,27 +507,27 @@ const LandingPage = () => {
                     </ul>
                   </CardContent>
                   <div className="p-6 pt-0 mt-auto">
-                    <Button className="w-full bg-teal-600 hover:bg-teal-700">Contact Sales</Button>
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700">Contact Sales</Button>
                   </div>
                 </Card>
               </div>
             </div>
           </section>
 
-          <section id="cta" className="w-full py-12 md:py-24 lg:py-32 bg-teal-600">
+          <section id="cta" className="w-full py-12 md:py-24 lg:py-32 bg-blue-600">
           <div className="container mx-auto px-4 md:px-6">
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
                     Ready to Transform Your Recruitment Process?
                   </h2>
-                  <p className="max-w-[900px] text-teal-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  <p className="max-w-[900px] text-blue-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     Join hundreds of companies that have revolutionized their hiring with AI Recruiter.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button className="bg-white text-teal-600 hover:bg-gray-100">Request Demo</Button>
-                  <Button variant="outline" className="text-white border-white hover:bg-teal-700">
+                  <Button className="bg-white text-blue-600 hover:bg-gray-100">Request Demo</Button>
+                  <Button variant="outline" className="text-white border-white hover:bg-blue-700">
                     Learn More
                   </Button>
                 </div>
@@ -541,7 +541,7 @@ const LandingPage = () => {
         <div className="container mx-auto flex flex-col gap-6 py-8 md:py-12 px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
               <div className="flex items-center gap-2">
-                <Search className="h-6 w-6 text-teal-600" />
+                <Search className="h-6 w-6 text-blue-600" />
                 <span className="text-xl font-bold">AI Recruiter</span>
               </div>
               <nav className="flex gap-4 md:gap-6 flex-wrap">
