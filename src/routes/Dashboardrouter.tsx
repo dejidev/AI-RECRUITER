@@ -4,22 +4,23 @@ import DashboardLayout from "../layout/DashboardLayout"
 import Dashboard from "../pages/Dashboard" // your main dashboard page
 import Jobs from "../pages/Job"
 import Settings from "../pages/Settings"
+import DashboardPage from "../pages/Dashboard-prev"
 
 const DashboardRouter = () => {
     return (
-        // <Routes>
-        //     <Route path="/" element={<DashboardLayout />}>
-        //         <Route index element={<Dashboard />} /> {/* this will show at /dashboard */}
-        //         <Route path="jobs" element={<Jobs />} />
-        //         <Route path="settings" element={<Settings />} />
-        //     </Route>
-        // </Routes>
 
         <DashboardLayout>
             <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/jobs" element={<Jobs />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/candidates" element={<div>Candidates Page</div>} />
+                <Route path="/matches" element={<div>Matches & Scoring Page</div>} />
+                <Route path="/communications" element={<div>Communications Page</div>} />
+                <Route path="/analytics" element={<div>Analytics Page</div>} />
+                <Route path="/teams-settings" element={<div>Teams & Settings Page</div>} />
+                <Route path="/previous" element={<DashboardPage />} />
+
             </Routes>
         </DashboardLayout>
 
