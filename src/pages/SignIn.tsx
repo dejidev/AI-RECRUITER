@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import SignHeader from "../components/SignHeader";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+
   const [password, setPassword] = useState("");
   const { signIn } = useAuth();
   const navigate = useNavigate();
@@ -23,19 +23,13 @@ const SignIn = () => {
           <div className="flex items-center justify-between min-h-screen">
             <div className="container">
               <form onSubmit={handleSubmit} className="text-center">
-                <h2 className="text-4xl font-bold">Create your account</h2>
+                <h2 className="text-4xl font-bold">Welcome Back</h2>
                 <p className="text-gray-500 mb-8">
                   Start hiring smarter & Faster...
                 </p>
                 <div className="grid grid-cols-1 gap-7 ">
                   <input
-                    placeholder="Full Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className=" py-3 px-6 shadow-md outline-none text-gray-500 w-[32vw] mx-auto"
-                  />
-                  <input
-                    placeholder="Email"
+                    placeholder="Name@work.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="py-3 px-6 shadow-md outline-none text-gray-500 w-[32vw] mx-auto"
@@ -47,6 +41,9 @@ const SignIn = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     className="py-3 px-6 shadow-md outline-none text-gray-500 w-[32vw] mx-auto"
                   />
+                  <small className="underline text-gray-500">
+                    Forgot Password
+                  </small>
                   <button
                     type="submit"
                     className="py-3 px-6 bg-[#1370C8] text-white rounded-md cursor-pointer w-[32vw] mx-auto"
@@ -54,14 +51,10 @@ const SignIn = () => {
                     Sign In
                   </button>
                 </div>
-                <p className="text-gray-500 mb-8">
-                  Already have an account ?
-                  <span className="text-[#1370C8] font-semibold">Sign in</span>
-                </p>
-                <p className="text-gray-500">
-                  By signing up you agree to Recruit AI's
-                  <span className="text-black underline ml-1">
-                    Terms and Condition
+                <p className="text-gray-500 mt-4">
+                  Don't have an account ?
+                  <span className="text-[#1370C8] font-semibold">
+                    <Link to={"/sign-up"}>Sign Up</Link>
                   </span>
                 </p>
               </form>
