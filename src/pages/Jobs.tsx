@@ -4,42 +4,42 @@ import no_job from "../assets/no-job.png"
 
 
 const jo_bs = [
-    // {
-    //     id: 1,
-    //     title: "Frontend Developer",
-    //     status: "Open",
-    //     applicants: 45,
-    //     date: "2025‑07‑05",
-    //     department: "Engineering",
-    //     location: "Remote",
-    // },
-    // {
-    //     id: 2,
-    //     title: "Backend Developer",
-    //     status: "Closed",
-    //     applicants: 30,
-    //     date: "2025‑07‑01",
-    //     department: "Engineering",
-    //     location: "Lagos",
-    // },
-    // {
-    //     id: 3,
-    //     title: "UI/UX Designer",
-    //     status: "Draft",
-    //     applicants: 0,
-    //     date: "—",
-    //     department: "Design",
-    //     location: "Remote",
-    // },
-    // {
-    //     id: 4,
-    //     title: "Product Manager",
-    //     status: "Open",
-    //     applicants: 18,
-    //     date: "2025‑06‑29",
-    //     department: "Product",
-    //     location: "Abuja",
-    // },
+    {
+        id: 1,
+        title: "Frontend Developer",
+        status: "Open",
+        applicants: 45,
+        date: "2025‑07‑05",
+        department: "Engineering",
+        location: "Remote",
+    },
+    {
+        id: 2,
+        title: "Backend Developer",
+        status: "Closed",
+        applicants: 30,
+        date: "2025‑07‑01",
+        department: "Engineering",
+        location: "Lagos",
+    },
+    {
+        id: 3,
+        title: "UI/UX Designer",
+        status: "Draft",
+        applicants: 0,
+        date: "—",
+        department: "Design",
+        location: "Remote",
+    },
+    {
+        id: 4,
+        title: "Product Manager",
+        status: "Open",
+        applicants: 18,
+        date: "2025‑06‑29",
+        department: "Product",
+        location: "Abuja",
+    },
 ];
 
 
