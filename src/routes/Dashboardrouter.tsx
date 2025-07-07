@@ -6,6 +6,7 @@ import Dashboard from "../pages/Dashboard" // your main dashboard page
 import Settings from "../pages/Settings"
 import DashboardPage from "../pages/Dashboard-prev"
 import Jobs from "../pages/Jobs"
+import Job from "../pages/Job"
 
 const DashboardRouter = () => {
     return (
@@ -15,14 +16,14 @@ const DashboardRouter = () => {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/jobs" element={<Jobs />} />
                 <Route path="/settings" element={<Settings />} />
-                <Route path="/candidates" element={<div>Candidates Page</div>} />
+                <Route path="/candidates" element={<Job/>} />
                 <Route path="/matches" element={<div>Matches & Scoring Page</div>} />
                 <Route path="/communications" element={<div>Communications Page</div>} />
-                <Route path="/analytics" element={<div>Analytics Page</div>} />
-                <Route path="/teams-settings" element={<div>Teams & Settings Page</div>} />
-                <Route path="/previous" element={<DashboardPage />} />
+                    <Route path="/analytics" element={<div>Analytics Page</div>} />
+                    <Route path="/teams-settings" element={<div>Teams & Settings Page</div>} />
+                    <Route path="/previous" element={<DashboardPage />} />
 
-            </Routes>
+                </Routes>
         </DashboardLayout>
 
     )
