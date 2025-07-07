@@ -2,9 +2,10 @@
 import { Route, Routes } from "react-router-dom"
 import DashboardLayout from "../layout/DashboardLayout"
 import Dashboard from "../pages/Dashboard" // your main dashboard page
-import Jobs from "../pages/Job"
+// import Jobs from "../pages/Job"
 import Settings from "../pages/Settings"
 import DashboardPage from "../pages/Dashboard-prev"
+import Jobs from "../pages/Jobs"
 
 const DashboardRouter = () => {
     return (
