@@ -12,6 +12,7 @@ import { useAuth } from "../context/AuthContext";
 // import Job from "../pages/Job";
 // import Settings from "../pages/Settings";
 import DashboardRouter from "./Dashboardrouter";
+import Error from "../pages/Error";
 
 const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
   const { user } = useAuth();
@@ -33,6 +34,7 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );
