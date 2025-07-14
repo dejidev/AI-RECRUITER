@@ -130,3 +130,8 @@ html {
 body {
   font-family: "Outfit", sans-serif !important;
 }
+
+ul,
+li {
+  list-style-type: none !important;
+}

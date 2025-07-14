@@ -86,7 +86,6 @@ const Jobs = () => {
   } as const;
 
   const handleShowJobOverview = () => {
-    console.log("Job Overview");
     setShowDetails(!showJobDetails);
   };
 
@@ -239,9 +238,7 @@ const Jobs = () => {
                       className=" hover:bg-gray-50 cursor-pointer"
                       onClick={() => {
                         handleShowJobOverview();
-                        navigate(`/dashboard/jobs/${job.id}`, {
-                          state: { showJobDetails: true },
-                        });
+                        navigate(`/dashboard/jobs/${job.id}`);
                       }}
                     >
                       <td className="px-4 py-3">{job.title}</td>
