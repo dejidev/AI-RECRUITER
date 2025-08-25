@@ -1,25 +1,62 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
-// import SignHeader from "../components/SignHeader";
+import { useAuth } from "../context/useAuth";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [name, setName] = useState(""); // optional if backend accepts it
   const [password, setPassword] = useState("");
-  const { signIn } = useAuth();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+
+
+  const { signUp } = useAuth(); // ✅ use signUp, not signIn
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const validateForm = () => {
+    if (!email) return "Email is required.";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return "Please enter a valid email.";
+
+    if (!password) return "Password is required.";
+    if (password.length < 6) return "Password must be at least 6 characters.";
+
+    return null;
+  };
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    signIn(email, password);
-    navigate("/dashboard");
+    setError(null);
+    setLoading(true);
+
+
+
+    // Client-side validation
+    const validationError = validateForm();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
+
+    try {
+      await signUp({ email, password });
+      navigate("/signin");
+
+    } catch (err: any) {
+      setError(err.message || "Signup failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div>
-      <section className="w-full bg-gradient-to-r ">
+      <section className="w-full bg-gradient-to-r">
         <div>
           <div className="flex items-center justify-between min-h-screen">
             <div className="container">
@@ -28,18 +65,21 @@ const SignUp = () => {
                 <p className="text-gray-500 mb-8">
                   Start hiring smarter & Faster...
                 </p>
+
                 <div className="grid grid-cols-1 gap-7 ">
                   <input
                     placeholder="Full Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className=" py-3 px-6 shadow-md outline-none text-gray-500 w-[32vw] mx-auto"
+                    className="py-3 px-6 shadow-md outline-none text-gray-500 w-[32vw] mx-auto"
                   />
                   <input
                     placeholder="Email"
+                    type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="py-3 px-6 shadow-md outline-none text-gray-500 w-[32vw] mx-auto"
+                    required
                   />
                   <input
                     type="password"
@@ -47,28 +87,69 @@ const SignUp = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="py-3 px-6 shadow-md outline-none text-gray-500 w-[32vw] mx-auto"
+                    required
                   />
+
                   <button
                     type="submit"
-                    className="py-3 px-6 bg-[#1370C8] text-white rounded-md cursor-pointer w-[32vw] mx-auto"
+                    disabled={loading}
+                    className="flex items-center justify-center gap-2 py-3 px-6 bg-[#1370C8] text-white rounded-md cursor-pointer w-[32vw] mx-auto disabled:opacity-70"
                   >
-                    Sign up
+                    {loading ? "Signing Up..." : "Sign Up"}
+
+                    {loading && (
+                      <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                        ></path>
+                      </svg>
+                    )}
                   </button>
+
+
+
+
+
+
+
+
+
+
+
                 </div>
-                <p className="text-gray-500 mb-8">
-                  Already have an account ?
+
+                {error && <p className="text-red-500 mt-4">{error}</p>}
+
+                <p className="text-gray-500 mb-8 mt-4">
+                  Already have an account?{" "}
                   <span className="text-[#1370C8] font-semibold">
-                    <Link to={"/signin"}>Sign in</Link>
+                    <Link to="/signin">Sign in</Link>
                   </span>
                 </p>
                 <p className="text-gray-500">
                   By signing up you agree to Recruit AI's
                   <span className="text-black underline ml-1">
-                    Terms and Condition
+                    Terms and Conditions
                   </span>
                 </p>
               </form>
             </div>
+
             <div>
               <div className="bg-[url(/images/sign-in-image.jpg)] h-screen w-[40vw] bg-no-repeat bg-cover bg-center rounded-tl-[80px]"></div>
             </div>

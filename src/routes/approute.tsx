@@ -8,11 +8,12 @@ import LandingPage from "../pages/LandingPage";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 // import Dashboard from "../pages/Dashboard";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/Auth";
 // import Job from "../pages/Job";
 // import Settings from "../pages/Settings";
 import DashboardRouter from "./Dashboardrouter";
 import Error from "../pages/Error";
+import { useAuth } from "../context/useAuth";
 
 const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
   const { user } = useAuth();
@@ -24,7 +25,7 @@ const AppRoutes = () => {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route
           path="/dashboard/*"
