@@ -2,6 +2,7 @@ import {
     ArrowRight,
     Users
 } from "lucide-react";
+import { useGetAllJobsQuery } from "../redux/jobs/jobsApi";
 
 const roleTableData = [
     { role: "Frontend Developer", users: 12, date: "2025-07-04" },
@@ -12,7 +13,15 @@ const roleTableData = [
 ];
 
 
+
+
 const JobOpening = () => {
+
+    const { data: jobs, isLoading: jobsloading } = useGetAllJobsQuery()
+
+    // console.log(jobs?.data)
+
+
   return (
       <div className="w-1/2 ">
           <div className="flex justify-between mb-8 font-semibold pr-6">
@@ -26,14 +35,14 @@ const JobOpening = () => {
           <div className="bg-white shadow rounded-lg overflow-x-auto font-semibold">
               <table className="w-full table-auto text-sm text-left">
                   <tbody className="text-gray-700">
-                      {roleTableData.map(({ role, users, date }) => (
-                          <tr key={role} className="border-t hover:bg-gray-50">
-                              <td className="px-4 py-3 font-medium">{role}</td>
+                      {jobs?.data.map(({ identifier, jobTitle, isActive, postedAt}) => (
+                          <tr key={identifier} className="border-t hover:bg-gray-50">
+                              <td className="px-4 py-3 font-medium">{jobTitle}</td>
                               <td className="px-4 py-3 flex items-center gap-2">
                                   <Users size={16} className="text-[#1370C8]" />
-                                  {users}
+                                  {isActive && 1}
                               </td>
-                              <td className="px-4 py-3 text-sm text-gray-500">{date}</td>
+                              <td className="px-4 py-3 text-sm text-gray-500">{postedAt}</td>
                           </tr>
                       ))}
                   </tbody>

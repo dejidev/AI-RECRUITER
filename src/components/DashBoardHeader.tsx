@@ -10,6 +10,7 @@ export default function DashBoardHeader() {
 
     const handleSignOut = () => {
         // Add your sign out logic here
+        
         navigate('/signin')
     }
 
@@ -45,6 +46,7 @@ export default function DashBoardHeader() {
                             <Settings className="h-5 w-5" />
                             <span className="sr-only">Settings</span>
                         </Button>
+                        <div></div>
                         <div className="relative">
                             <img src="/placeholder.svg?height=40&width=40" alt="Avatar" className="rounded-full h-8 w-8" />
                         </div>

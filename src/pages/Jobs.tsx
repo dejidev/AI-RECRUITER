@@ -11,10 +11,13 @@ import {
 import { useEffect, useState } from "react";
 import no_job from "../assets/no-job.png";
 
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+
+import { useGetAllJobsQuery } from "../redux/jobs/jobsApi";
+import { useAuth } from "../context/useAuth";
 
 const jo_bs = [
   {
@@ -62,21 +65,97 @@ const jo_bs = [
   },
 ];
 
+
+
+const myjob = {
+  "status_code": 200,
+  "status": "success",
+  "data": [
+    {
+      "identifier": "15691e86-9a31-404d-817f-7a3aee7832ad",
+      "jobTitle": "Software Engineer Developer",
+      "isActive": true,
+      "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
+      "applicantsCount": 0,
+      "postedAt": "2025-08-27T10:14:44.317Z"
+    },
+    {
+      "identifier": "8afb3eb0-cfe8-4380-b53f-18bbbea5f2ee",
+      "jobTitle": "Backend Developer",
+      "isActive": true,
+      "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
+      "applicantsCount": 0,
+      "postedAt": "2025-08-27T10:03:03.364Z"
+    },
+    {
+      "identifier": "947f786c-dbc8-4580-b197-36ebd791d568",
+      "jobTitle": "Frontend Developer",
+      "isActive": true,
+      "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
+      "applicantsCount": 3,
+      "postedAt": "2025-08-24T16:08:47.136Z"
+    }
+  ],
+  "total": 3
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const Jobs = () => {
+  const { user } = useAuth();
+  const { data: jobsResponse, isLoading, isError } = useGetAllJobsQuery();
+
+  const jobs = jobsResponse?.data ?? [];
+
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [statusFilter, setStatusFilter] = useState<
-    "All" | "Open" | "Closed" | "Draft"
-  >("All");
-
+  const [statusFilter, setStatusFilter] = useState<"All" | "Open" | "Closed">(
+    "All"
+  );
   const [showJobDetails, setShowDetails] = useState<boolean>(false);
+
+  // Map backend `isActive` → status string
+  const mappedJobs = jobs.map((j) => ({
+    id: j.identifier,
+    title: j.jobTitle,
+    status: j.isActive ? "Open" : "Closed",
+    applicants: j.applicantsCount,
+    date: new Date(j.postedAt).toLocaleDateString(),
+  }));
 
   /* Filtered jobs */
   const filteredJobs =
     statusFilter === "All"
-      ? jo_bs
-      : jo_bs.filter((j) => j.status === statusFilter);
+      ? mappedJobs
+      : mappedJobs.filter((j) => j.status === statusFilter);
 
   /* Tailwind badge colours by status */
   const statusClasses = {
@@ -95,12 +174,16 @@ const Jobs = () => {
     }
   }, [location.pathname]);
 
+  if (isLoading) return <p className="p-6">Loading jobs...</p>;
+
+  if (isError) return <p className="p-6 text-red-500">Error loading jobs.</p>;
+
   return (
     <div className="px-4 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between flex-wrap gap-4  py-3 ">
         {/* Left section: Home title */}
         <div className="flex items-center gap-2 font-semibold text-gray-800">
-          <Home size={18} className="" />
+          <Home size={18} />
           <h1>Jobs</h1>
         </div>
 
@@ -112,7 +195,7 @@ const Jobs = () => {
             </span>
             <input
               type="text"
-              placeholder="search job titile..."
+              placeholder="search job title..."
               className="w-full pl-8 pr-3 py-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400"
             />
           </div>
@@ -120,18 +203,19 @@ const Jobs = () => {
 
         {/* Right section: Profile */}
         <div className="flex items-center gap-3">
-          {/* <img
-                        src={}
-                        alt="Profile"
-                        className="w-10 h-10 rounded-full object-cover"
-                    /> */}
-
           <div className="bg-green-500 p-2 rounded-full">
             <UserCog size={20} />
           </div>
           <div className="leading-tight">
-            <p className="text-sm font-medium text-gray-800">Jane Doe</p>
-            <p className="text-xs text-gray-500">jane.doe@example.com</p>
+            <p className="text-sm font-medium text-gray-800">
+              User's Profile
+            </p>
+
+            {user ? (
+              <p className="text-xs text-gray-500">{user.email}</p>
+            ) : (
+              <div className="h-3 w-28 bg-gray-200 animate-pulse rounded mt-1"></div>
+            )}
           </div>
         </div>
       </div>
@@ -139,20 +223,6 @@ const Jobs = () => {
       {!showJobDetails ? (
         <section className={`mt-16`}>
           <h1 className="gap-3 font-semibold text-xl mb-4">Jobs</h1>
-
-          {/* Middle section: Search bar */}
-          <div className="flex-1 max-w-sm mb-8">
-            <div className="relative w-full">
-              <span className="absolute inset-y-0 left-2 flex items-center text-gray-400">
-                <Search size={18} className="text-[#1370C8]" />
-              </span>
-              <input
-                type="text"
-                placeholder="search job titile..."
-                className="w-full pl-8 pr-3 py-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400"
-              />
-            </div>
-          </div>
 
           <div className="flex items-center justify-between w-full mb-4">
             {/* Left: Create New Job Button */}
@@ -177,33 +247,31 @@ const Jobs = () => {
               {/* Left – All */}
               <span
                 onClick={() => setStatusFilter("All")}
-                className={`text-sm font-medium cursor-pointer ${
-                  statusFilter === "All" ? "text-[#1370C8]" : "text-gray-800"
-                }`}
+                className={`text-sm font-medium cursor-pointer ${statusFilter === "All" ? "text-[#1370C8]" : "text-gray-800"
+                  }`}
               >
                 All
               </span>
 
               {/* Middle – Open | Closed | Draft */}
               <div className="flex gap-6 text-sm font-semibold">
-                {["Open", "Closed", "Draft"].map((label) => (
+                {["Open", "Closed"].map((label) => (
                   <span
                     key={label}
-                    onClick={() => setStatusFilter(label as any)}
-                    className={`cursor-pointer whitespace-nowrap ${
-                      statusFilter === label
-                        ? "text-[#1370C8]"
-                        : "text-gray-600"
-                    }`}
+                    onClick={() => setStatusFilter(label)}
+                    className={`cursor-pointer whitespace-nowrap ${statusFilter === label
+                      ? "text-[#1370C8]"
+                      : "text-gray-600"
+                      }`}
                   >
                     {label}
                   </span>
                 ))}
               </div>
 
-              {/* Right – dropdown buttons (static UI) */}
+              {/* Right – dropdown buttons */}
               <div className="flex gap-2">
-                {["Job Status", "Department", "Location", "Date‑Posted"].map(
+                {["Job Status", "Department", "Location", "Date-Posted"].map(
                   (label) => (
                     <button
                       key={label}
@@ -224,10 +292,10 @@ const Jobs = () => {
               <table className="w-full text-sm table-auto">
                 <thead className="bg-[#F6F9FC] text-gray-600 text-xs">
                   <tr>
-                    <th className="px-4 py-3 text-left">Job Title</th>
+                    <th className="px-4 py-3 text-left">Job Title</th>
                     <th className="px-4 py-3 text-center">Status</th>
                     <th className="px-4 py-3">Applicants</th>
-                    <th className="px-4 py-3">Date Posted</th>
+                    <th className="px-4 py-3">Date Posted</th>
                     <th className="px-4 py-3">Actions</th>
                   </tr>
                 </thead>
@@ -235,20 +303,17 @@ const Jobs = () => {
                   {filteredJobs.map((job) => (
                     <tr
                       key={job.id}
-                      className=" hover:bg-gray-50 cursor-pointer"
+                      className="hover:bg-gray-50 cursor-pointer"
                       onClick={() => {
                         handleShowJobOverview();
                         navigate(`/dashboard/jobs/${job.id}`);
                       }}
                     >
                       <td className="px-4 py-3">{job.title}</td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 text-center">
                         <span
-                          className={`px-2 py-0.5 rounded text-xs font-medium ${
-                            statusClasses[
-                              job.status as keyof typeof statusClasses
-                            ]
-                          }`}
+                          className={`px-2 py-0.5 rounded text-xs font-medium ${statusClasses[job.status as keyof typeof statusClasses]
+                            }`}
                         >
                           {job.status}
                         </span>
@@ -273,7 +338,7 @@ const Jobs = () => {
                       <td colSpan={5} className="py-10">
                         <div className="flex flex-col items-center justify-center text-gray-500 my-8">
                           <img
-                            src={no_job} // 👈 Replace with your actual image path
+                            src={no_job}
                             alt="No jobs"
                             className="w-40 h-40 mb-4 opacity-75"
                           />

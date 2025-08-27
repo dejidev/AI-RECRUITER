@@ -8,14 +8,17 @@ import DashboardPage from "../pages/Dashboard-prev";
 import Jobs from "../pages/Jobs";
 import Job from "../pages/Job";
 import JobsDetails from "../pages/JobsDetails";
+// import SignOutButton from "../components/SignOutButton";
 
 const DashboardRouter = () => {
   return (
     <DashboardLayout>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+
         <Route path="/jobs" element={<Jobs />}>
-          <Route path=":jobsId" element={<JobsDetails />} />
+          <Route path=":id" element={<JobsDetails />} />
+          <Route path="/create" element={<JobsDetails />} />
         </Route>
         <Route path="/settings" element={<Settings />} />
         <Route path="/candidates" element={<Job />} />
@@ -30,6 +33,7 @@ const DashboardRouter = () => {
           element={<div>Teams & Settings Page</div>}
         />
         <Route path="/previous" element={<DashboardPage />} />
+        {/* <Route path="/logout" element={<SignOutButton />} /> */}
       </Routes>
     </DashboardLayout>
   );

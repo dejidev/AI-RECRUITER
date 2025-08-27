@@ -5,18 +5,12 @@ import {
     Briefcase,
     Users,
     BarChart2,
-
-
-
     PlusCircle,
     FileText,
     ClipboardList,
     Layers,
     Eye,
     Settings,
-
-
-    ArrowRight,
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
@@ -29,49 +23,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import PipelineCard from "../components/PipelineCard";
 import JobOpening from "../components/JobOpening";
+import { useGetApplicationsQuery } from "../redux/application/applicationApi";
 
 
-interface JobCardProps {
-    /** Icon (Lucide or any JSX) */
-    icon: JSX.Element;
-    title_desc: string;
-    /** Card title – e.g. "Job Posting" */
-    title: string;
-    /** Number of active jobs */
-    active: number;
-    /** Date string – e.g. "04 Jul 2025" */
-    date: string;
-    /** Where “View Data” should point to */
-    to?: string;
-}
 
-
-const cards = [
-    {
-        title: "Job Posting",
-        title_desc: "Active jobs",
-        icon: <Briefcase size={20} />,
-        active: 12,
-        date: "04 Jul 2025",
-        to: "/jobs",
-    },
-    {
-        title: "Application Received",
-        title_desc: "Total Applicants",
-        icon: <Users size={20} />,
-        active: 87,
-        date: "04 Jul 2025",
-        to: "/candidates",
-    },
-    {
-        title: "AI Match",
-        title_desc: "AI Match Quality",
-        icon: <BarChart2 size={20} />,
-        active: 5,
-        date: "04 Jul 2025",
-        to: "/analytics",
-    },
-];
 
 
 
@@ -117,12 +72,53 @@ const actionCards = [
 
 
 
-
-
-
+import { useGetRolesQuery } from "../redux/role-match/rolematching";
+import { useAuth } from "../context/useAuth";
+import { useGetAllJobsQuery } from "../redux/jobs/jobsApi";
 
 
 const Dashboard = () => {
+
+    const { user } = useAuth()
+
+    const { data: roles, isLoading: rolesloading } = useGetRolesQuery();
+
+    const { data: jobs, isLoading: jobsloading } = useGetAllJobsQuery()
+
+
+    const { data: applications, isLoading: applicationsloading } = useGetApplicationsQuery();
+
+    // console.log(jobs?.data);
+
+
+
+    const cards = [
+        {
+            title: "Job Posting",
+            title_desc: "Active jobs",
+            icon: <Briefcase size={20} />,
+            active: jobs?.data.length,
+            date: "04 Jul 2025",
+            to: "/dashboard/jobs",
+        },
+        {
+            title: "Application Received",
+            title_desc: "Total Applicants",
+            icon: <Users size={20} />,
+            active: applications?.length,
+            date: "04 Jul 2025",
+            to: "/dashboard/candidates",
+        },
+        {
+            title: "AI Match",
+            title_desc: "AI Match Quality",
+            icon: <BarChart2 size={20} />,
+            active: roles?.roles.length,
+            date: "04 Jul 2025",
+            to: "/dashboard/analytics",
+        },
+    ];
+
 
     return (
         <div className="px-4 bg-gray-50 min-h-screen">
@@ -160,16 +156,24 @@ const Dashboard = () => {
                         <UserCog size={20} />
                     </div>
                     <div className="leading-tight">
-                        <p className="text-sm font-medium text-gray-800">Jane Doe</p>
-                        <p className="text-xs text-gray-500">jane.doe@example.com</p>
+                        <p className="text-sm font-medium text-gray-800">
+                            User's Profile
+                        </p>
+
+                        {user ? (
+                            <p className="text-xs text-gray-500">{user.email}</p>
+                        ) : (
+                            <div className="h-3 w-28 bg-gray-200 animate-pulse rounded mt-1"></div>
+                        )}
                     </div>
+
                 </div>
             </div>
 
             <section className="mt-16">
                 <h1 className="gap-3 font-semibold text-xl">
                     <span>Welcome, </span>
-                    <span>Folashade Adewara</span>
+                    <span>{user?.email}</span>
                 </h1>
 
 
@@ -202,10 +206,6 @@ const Dashboard = () => {
                         </div>
                     ))}
                 </div>
-
-
-
-
 
 
 
@@ -277,7 +277,7 @@ const Dashboard = () => {
 
 
 
-            <section className="mt-16 flex justify-center gap-8 ">
+            <section className="mt-16 flex justify-center gap-8 pb-16">
 
 
                 <JobOpening />
@@ -289,7 +289,12 @@ const Dashboard = () => {
 
 
 
+
+
+
             </section>
+
+
         </div>
     )
 }

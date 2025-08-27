@@ -16,9 +16,19 @@ import Error from "../pages/Error";
 import { useAuth } from "../context/useAuth";
 
 const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
-  const { user } = useAuth();
-  return user ? children : <Navigate to="/sign-up" />;
+  const { token } = useAuth();
+
+  // Fallback: check localStorage directly
+  const savedToken = localStorage.getItem("token");
+  // const savedUser = localStorage.getItem("user");
+
+  if (!token && !savedToken) {
+    return <Navigate to="/signin" replace />;
+  }
+
+  return children;
 };
+
 
 const AppRoutes = () => {
   return (
