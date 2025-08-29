@@ -10,6 +10,24 @@ type Job = {
     postedAt: string;
 };
 
+// Job type (matches backend exactly)
+type CreateJob = {
+    jobTitle: string;
+    category: string;
+    location: string;
+    employmentType: string;
+    experienceLevel: string;
+    deadline: string;
+    jobDescription: string;
+    responsibilities: string;
+    requirements: string;
+    benefits: string;
+    salaryMin: number;
+    salaryMax: number;
+    currency: string;
+};
+
+
 export const jobsApi = createApi({
     reducerPath: "jobsApi",
     baseQuery: fetchBaseQuery({
@@ -44,7 +62,7 @@ export const jobsApi = createApi({
         }),
 
         createJob: builder.mutation<
-            { status_code: number; status: string; data: Job },
+            { status_code: number; status: string; data: CreateJob },
             Partial<Job>
         >({
             query: (newJob) => ({

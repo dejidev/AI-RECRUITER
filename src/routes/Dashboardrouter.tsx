@@ -8,6 +8,7 @@ import DashboardPage from "../pages/Dashboard-prev";
 import Jobs from "../pages/Jobs";
 import Job from "../pages/Job";
 import JobsDetails from "../pages/JobsDetails";
+import CreateJobs from "../pages/CreateJobs";
 // import SignOutButton from "../components/SignOutButton";
 
 const DashboardRouter = () => {
@@ -18,7 +19,7 @@ const DashboardRouter = () => {
 
         <Route path="/jobs" element={<Jobs />}>
           <Route path=":id" element={<JobsDetails />} />
-          <Route path="/create" element={<JobsDetails />} />
+          <Route path="create" element={<CreateJobs />} />
         </Route>
         <Route path="/settings" element={<Settings />} />
         <Route path="/candidates" element={<Job />} />
