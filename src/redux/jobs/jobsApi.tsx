@@ -34,7 +34,6 @@ export const jobsApi = createApi({
         baseUrl: "http://localhost:8080/interface",
         prepareHeaders: (headers) => {
             const token = localStorage.getItem("token"); // 👈 get token from localStorage
-            console.log(token)
             if (token) {
                 headers.set("Authorization", `${token}`); // 👈 add Bearer prefix
             }
@@ -73,6 +72,19 @@ export const jobsApi = createApi({
             invalidatesTags: ["Job"],
         }),
 
+        // updateJob: builder.mutation<
+        //     { status_code: number; status: string; data: Job },
+        //     { id: string; job: Partial<Job> }
+        // >({
+        //     query: ({ id, job }) => ({
+        //         url: `/job/${id}`,
+        //         method: "PUT",
+        //         body: job,
+        //     }),
+        //     invalidatesTags: (result, error, { id }) => [{ type: "Job", id }],
+        // }),
+
+
         updateJob: builder.mutation<
             { status_code: number; status: string; data: Job },
             { id: string; job: Partial<Job> }
@@ -82,7 +94,7 @@ export const jobsApi = createApi({
                 method: "PUT",
                 body: job,
             }),
-            invalidatesTags: (result, error, { id }) => [{ type: "Job", id }],
+            invalidatesTags: ["Job"], // ✅ Invalidate all jobs cache
         }),
 
         deleteJob: builder.mutation<{ status_code: number; status: string }, string>(

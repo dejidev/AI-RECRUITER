@@ -1,70 +1,83 @@
-
-import React, { useState } from "react";
-import { useCreateJobMutation } from "../redux/jobs/jobsApi";
-
-
-import { ChevronLeft, Circle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import JobDetailsForm from "../components/JobDetailsForm";
-import JobRequirementForm from "../components/JobRequirementForm";
-import CompensationForm from "../components/CompensationForm";
-
-// Job type (matches backend exactly)
-export type formDatatype = {
-    jobTitle: string;
-    category: string;
-    location: string;
-    employmentType: string;
-    experienceLevel: string;
-    deadline: string;
-    jobDescription: string;
-    responsibilities: string;
-    requirements: string;
-    benefits: string;
-    salaryMin: number | string;
-    salaryMax: number | string;
-    currency: string;
-};
+import { ChevronLeft, Circle } from 'lucide-react';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
+import CompensationForm from '../components/CompensationForm';
+import JobDetailsForm from '../components/JobDetailsForm';
+import JobRequirementForm from '../components/JobRequirementForm';
+import { useGetJobByIdQuery, useUpdateJobMutation, } from '../redux/jobs/jobsApi';
 
 
 
+const UpdateJobs: React.FC = () => {
 
-
-
-const CreateJobs: React.FC = () => {
     const navigate = useNavigate();
+
+
+    // ✅ get jobId from URL params
+    const { id } = useParams<{ id: string }>();
+
+    const { data: job, isLoading, isError } = useGetJobByIdQuery(id!);
+    const [updateJob, { isLoading: isUpdating }] = useUpdateJobMutation();
+
+
+    console.log(id)
+
+    console.log(job)
+
 
 
 
     const [step, setStep] = useState(1);
-    const [formData, setFormData] = useState<formDatatype>({
+    const [formData, setFormData] = useState({
         jobTitle: "",
         category: "",
         location: "",
         employmentType: "",
         experienceLevel: "",
         deadline: "",
-
         jobDescription: "",
         responsibilities: "",
         requirements: "",
         benefits: "",
-
         salaryMin: 0,
         salaryMax: 0,
         currency: "",
+        isActive: true,
     });
 
-    console.log(formData)
 
-    const [createJob, { isLoading }] = useCreateJobMutation();
 
     const handleChange = (field: string, value: string) => {
         setFormData((prev) => ({ ...prev, [field]: value }));
     };
 
-    const handleSubmit = async () => {
-        // 1. Check for empty fields
+    // ✅ Prefill
+    useEffect(() => {
+        if (job) {
+            setFormData({
+                jobTitle: job.data.jobTitle ?? "",
+                category: job.data.category ?? "",
+                location: job.data.location ?? "",
+                employmentType: job.data.employmentType ?? "",
+                experienceLevel: job.data.experienceLevel ?? "",
+                deadline: job.data.deadline ?? "",
+                jobDescription: job.data.jobDescription ?? "",
+                responsibilities: job.data.responsibilities ?? "",
+                requirements: job.data.requirements ?? "",
+                benefits: job.data.benefits ?? "",
+                salaryMin: job.data.salaryMin ?? 0,
+                salaryMax: job.data.salaryMax ?? 0,
+                currency: job.data.currency ?? "",
+                isActive: job.data.isActive ?? true,
+            });
+        }
+    }, [job]);
+
+    // ✅ Handle submit
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+
         for (const [key, value] of Object.entries(formData)) {
             if (!value) {
                 alert(`${key} is required ❌`);
@@ -97,23 +110,33 @@ const CreateJobs: React.FC = () => {
             return;
         }
 
-        // ✅ If all checks passed, submit
-        try {
-            const response = await createJob(
-                formData,
-            ).unwrap();
+        if (!formData.jobTitle || !formData.jobDescription) {
+            alert("Job title and description are required.");
+            return;
+        }
 
-            console.log(response)
-            alert("Job created successfully ✅");
+        try {
+            if (!id) {
+                alert("Job ID is missing.");
+                return;
+            }
+            const result = await updateJob({ id, job: formData }).unwrap();
+            console.log("Updated ✅", result);
+            alert("Job updated successfully!");
             navigate("/dashboard/jobs")
-        } catch (error) {
-            console.error("Error creating job:", error);
-            alert("Failed to create job ❌");
+        } catch (err) {
+            console.error("Update failed ❌", err);
+            alert(err?.data?.error || "Update failed");
         }
     };
 
-    return (
+    if (isLoading) return <p>Loading job...</p>;
 
+
+
+
+
+    return (
         <section className="mt-16 bg-white p-5 rounded-2xl min-h-screen">
             {/* Back Button */}
             <p
@@ -125,19 +148,46 @@ const CreateJobs: React.FC = () => {
             </p>
 
 
+            <div className='flex  items-center gap-16'>
+                <h1 className="gap-3 font-semibold text-2xl mb-4"> Update Job</h1>
+
+                <div className='flex items-center mb-4'>
+                    <div
+                        onClick={() =>
+                            setFormData((prev) => ({ ...prev, isActive: !prev.isActive }))
+                        }
+                        className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer transition ${formData.isActive ? "bg-[#1370C8]" : "bg-gray-200"
+                            }`}
+                    >
+                        <div
+                            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition ${formData.isActive ? "translate-x-6" : ""
+                                }`}
+                        />
+                    </div>
+
+                    <span className="ml-2 text-sm text-gray-700">
+                        {formData.isActive ? "Active" : "Inactive"}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
 
 
             <div>
                 <div >
-                    <div>
-                        <h1 className="gap-3 font-semibold text-2xl mb-4"> Post a New Job</h1>
-
-                    </div>
                     {/* Step Indicator */}
                     <div className="flex items-center my-6">
-
-
-
                         <button
                             onClick={() => setStep(1)}
                             className={`flex items-center gap-2 mr-4 md:mr-8 ${step === 1 ? "text-[#1370C8]" : "text-[#64748B]"}`}
@@ -186,10 +236,10 @@ const CreateJobs: React.FC = () => {
                         ) : (
                             <button
                                 onClick={handleSubmit}
-                                disabled={isLoading}
+                                disabled={isUpdating}
                                 className="bg-[#1370C8] text-white px-12 py-4 rounded"
                             >
-                                {isLoading ? "Submitting..." : "Submit"}
+                                {isUpdating ? "Updating job..." : "Update Job"}
                             </button>
                         )}
                     </div>
@@ -201,17 +251,4 @@ const CreateJobs: React.FC = () => {
     )
 }
 
-export default CreateJobs;
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default UpdateJobs;

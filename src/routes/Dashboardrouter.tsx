@@ -9,6 +9,8 @@ import Jobs from "../pages/Jobs";
 import Job from "../pages/Job";
 import JobsDetails from "../pages/JobsDetails";
 import CreateJobs from "../pages/CreateJobs";
+import UpdateJobs from "../pages/UpdateJobs";
+import Candidate from "../pages/Candidate";
 // import SignOutButton from "../components/SignOutButton";
 
 const DashboardRouter = () => {
@@ -20,9 +22,12 @@ const DashboardRouter = () => {
         <Route path="/jobs" element={<Jobs />}>
           <Route path=":id" element={<JobsDetails />} />
           <Route path="create" element={<CreateJobs />} />
+          <Route path="update">
+            <Route path=":id" element={<UpdateJobs />} />
+          </Route>
         </Route>
         <Route path="/settings" element={<Settings />} />
-        <Route path="/candidates" element={<Job />} />
+        <Route path="/candidates" element={<Candidate />} />
         <Route path="/matches" element={<div>Matches & Scoring Page</div>} />
         <Route
           path="/communications"

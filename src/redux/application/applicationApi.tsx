@@ -11,22 +11,43 @@ export const applicationApi = createApi({
             return headers;
         },
     }),
+    tagTypes: ["Applications"], // 👈 add caching tag
     endpoints: (builder) => ({
         getApplications: builder.query<Application[], void>({
             query: () => "/apply",
             transformResponse: (response: ApplicationResponse) => response.data,
+            providesTags: ["Applications"],
         }),
+
         applyToJob: builder.mutation<
-            { message: string }, // expected success response
-            { identifier: string } // request body
+            { message: string },
+            { identifier: string }
         >({
             query: ({ identifier }) => ({
                 url: "/apply",
                 method: "POST",
                 body: { identifier },
             }),
+            invalidatesTags: ["Applications"],
         }),
+        
+        updateApplication: builder.mutation<
+            { message: string }, // adjust to match your backend's success response
+            { id: number; status: string }
+        >({
+            query: ({ id, status }) => ({
+                url: `/apply/${id}`,
+                method: "PUT",
+                body: { status },   // ✅ matches Postman payload
+            }),
+            invalidatesTags: ["Applications"], // optional: ensures refetch
+        }),
+
     }),
 });
 
-export const { useGetApplicationsQuery, useApplyToJobMutation } = applicationApi;
+export const {
+    useGetApplicationsQuery,
+    useApplyToJobMutation,
+    useUpdateApplicationMutation, // 👈 export new hook
+} = applicationApi;

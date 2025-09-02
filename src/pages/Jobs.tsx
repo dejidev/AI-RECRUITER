@@ -17,7 +17,7 @@ import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import {
-  useGetAllJobsQuery, useDeleteJobMutation, useUpdateJobMutation,
+  useGetAllJobsQuery, useDeleteJobMutation, 
 } from "../redux/jobs/jobsApi";
 import { useAuth } from "../context/useAuth";
 
@@ -112,7 +112,6 @@ const Jobs = () => {
   const { user } = useAuth();
   const { data: jobsResponse, isLoading, isError } = useGetAllJobsQuery();
   const [deleteJob] = useDeleteJobMutation();
-  // const [updateJob] = useUpdateJobMutation();
 
 
   const jobs = jobsResponse?.data ?? [];
@@ -168,7 +167,7 @@ const Jobs = () => {
 
 
   const handleEdit = (id: string) => {
-    navigate(`/dashboard/jobs/create?id=${id}`);
+    navigate(`/dashboard/jobs/update/${id}`);
   };
 
 
@@ -287,7 +286,7 @@ const Jobs = () => {
                   {["Open", "Closed"].map((label) => (
                     <span
                       key={label}
-                      onClick={() => setStatusFilter(label)}
+                      onClick={() => setStatusFilter(label as "Open" | "Closed")}
                       className={`cursor-pointer whitespace-nowrap ${statusFilter === label
                         ? "text-[#1370C8]"
                         : "text-gray-600"
