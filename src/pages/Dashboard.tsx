@@ -88,6 +88,10 @@ const Dashboard = () => {
 
     const { data: applications, isLoading: applicationsloading } = useGetApplicationsQuery();
 
+    console.log(rolesloading)
+    console.log(jobsloading)
+    console.log(applicationsloading)
+
     // console.log(jobs?.data);
 
 

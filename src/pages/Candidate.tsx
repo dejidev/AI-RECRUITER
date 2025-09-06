@@ -4,7 +4,7 @@ import { useAuth } from "../context/useAuth";
 
 
 import ApplicationsBoard from "../components/ApplicationBoard";
-import { useGetApplicationsQuery } from "../redux/application/applicationApi";
+// import { useGetApplicationsQuery } from "../redux/application/applicationApi";
 
 
 
@@ -12,7 +12,7 @@ import { useGetApplicationsQuery } from "../redux/application/applicationApi";
 export default function Candidate() {
   const { user } = useAuth();
 
-  const { data: applicationResponse, isLoading, isError } = useGetApplicationsQuery()
+  // const { data: applicationResponse, isLoading, isError } = useGetApplicationsQuery()
 
   // console.log(applicationResponse)
   return (

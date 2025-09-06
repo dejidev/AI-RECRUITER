@@ -14,6 +14,7 @@ import SignIn from "../pages/SignIn";
 import DashboardRouter from "./Dashboardrouter";
 import Error from "../pages/Error";
 import { useAuth } from "../context/useAuth";
+import JobApplicationForm from "../pages/JobApplication";
 
 const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
   const { token } = useAuth();
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/apply/:identifier" element={<JobApplicationForm />} />
         <Route
           path="/dashboard/*"
           element={

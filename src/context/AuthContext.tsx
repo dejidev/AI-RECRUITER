@@ -6,12 +6,24 @@ type User = {
     email: string;
 };
 
+// type AuthContextType = {
+//     user: User | null;
+//     token: string | null;
+//     signIn: (credentials: AuthCredentials) => Promise<void>;
+//     signUp: (credentials: AuthCredentials) => Promise<void>;
+//     signOut: () => void;
+// };
+
+
 type AuthContextType = {
     user: User | null;
     token: string | null;
-    signIn: (credentials: AuthCredentials) => Promise<void>;
-    signUp: (credentials: AuthCredentials) => Promise<void>;
+    signIn: (credentials: AuthCredentials) => Promise<{ user: User; token: string }>;
+    signUp: (credentials: AuthCredentials) => Promise<{ user: User; token: string }>;
     signOut: () => void;
 };
+
+
+
 
 export const AuthContext = createContext<AuthContextType | null>(null);

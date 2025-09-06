@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Menu } from "lucide-react";
+// import { useState } from "react";
+// import { Menu } from "lucide-react";
 import DashboardSidebar from "../components/DashboardSidebar";
 
 export default function DashboardLayout({
@@ -7,24 +7,24 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div>
       {/* Mobile hamburger */}
-      <button
+      {/* <button
         type="button"
         onClick={() => setSidebarOpen(true)}
         aria-label="Open sidebar"
         className="fixed top-4 left-4 z-50 p-2 rounded-md bg-white shadow md:hidden"
       >
         <Menu size={22} />
-      </button>
+      </button> */}
 
       {/* Sidebar */}
       <DashboardSidebar
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
+        // isOpen={sidebarOpen}
+        // onClose={() => setSidebarOpen(false)}
       />
 
       {/* Main content */}

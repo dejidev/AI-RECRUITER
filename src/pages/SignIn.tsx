@@ -38,8 +38,12 @@ const SignIn = () => {
     try {
       await signIn({ email, password });
       navigate("/dashboard");
-    } catch (err: any) {
-      setError(err.message || "Invalid credentials. Please try again.");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message || "Invalid credentials. Please try again.");
+      } else {
+        setError("Invalid credentials. Please try again.");
+      }
     } finally {
       setLoading(false)
     }

@@ -1,27 +1,9 @@
 import { ChevronLeft, Target, Star, Users } from "lucide-react";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGetJobByIdQuery } from "../redux/jobs/jobsApi";
 
 
-// interface JobProps {
-//   job: {
-//     jobTitle: string;
-//     jobDescription: string;
-//     category: string;
-//     location: string;
-//     employmentType: string;
-//     experienceLevel: string;
-//     deadline: string;
-//     responsibilities: string;
-//     requirements: string;
-//     benefits: string;
-//     currency: string;
-//     salaryMin: number | null;
-//     salaryMax: number | null;
-//     applicationLink: string;
-//   };
-// }
 
 
 export default function JobsDetails() {
@@ -32,7 +14,8 @@ export default function JobsDetails() {
 
   const { data: job, isLoading, isError } = useGetJobByIdQuery(id!);
 
-  const jobs = job?.data;
+  // const jobs = job?.data;
+
 
   console.log(job?.data)
   const [showJobDescription, setShowJobDescription] = useState<boolean>(false);
@@ -53,6 +36,9 @@ export default function JobsDetails() {
     );
   }
 
+  const backendLink = job?.data.applicationLink;
+  const identifier = backendLink?.split("/").pop();
+  // const frontendLink = identifier ? `/apply/${identifier}` : "#";
 
 
   return (
@@ -97,10 +83,10 @@ export default function JobsDetails() {
           {job?.data.applicants?.length ?? 0} Applicants
         </li>
         <li className="flex gap-2">
-          <Star stroke="yellow" fill="yellow" /> {job?.data.shortlisted ?? 0} Shortlisted
+          <Star stroke="yellow" fill="yellow" /> {job?.data.applicants.length ?? 0} Shortlisted
         </li>
         <li className="flex gap-2">
-          <Target color="#ed2c35" /> {job?.data.avgFit ?? 0}% Avg Fit
+          <Target color="#ed2c35" /> {job?.data.applicants.length ?? 0}% Avg Fit
         </li>
       </ul>
 
@@ -127,7 +113,7 @@ export default function JobsDetails() {
               </li>
               <li className="flex gap-3 mb-3">
                 <span className="text-[#64748B]">Location: </span>
-                <span>{job?.data?.jobLocation}</span>
+                <span>{job?.data?.location}</span>
               </li>
               <li className="flex gap-3 mb-3">
                 <span className="text-[#64748B]">Date Posted: </span>
@@ -192,7 +178,14 @@ export default function JobsDetails() {
               </a> */}
 
               <p className="inline-block mt-4 ">
-                <span>Apply Here:</span>  <span className="text-blue-600 hover:underline"> {job?.data.applicationLink}</span>
+                <span>Apply Here:</span>  <span className="text-blue-600 hover:underline">
+                  {/* {job?.data.applicationLink} */}
+                  {identifier && (
+                    <Link to={`/apply/${job?.data.identifier}`}>
+                      Apply Now
+                    </Link>
+                  )}
+                </span>
               </p>
 
             </div>

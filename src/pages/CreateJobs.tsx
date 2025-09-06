@@ -100,7 +100,11 @@ const CreateJobs: React.FC = () => {
         // ✅ If all checks passed, submit
         try {
             const response = await createJob(
-                formData,
+                {
+                    ...formData,
+                    salaryMin: formData.salaryMin === "" || formData.salaryMin === null ? null : Number(formData.salaryMin),
+                    salaryMax: formData.salaryMax === "" || formData.salaryMax === null ? null : Number(formData.salaryMax),
+                }
             ).unwrap();
 
             console.log(response)

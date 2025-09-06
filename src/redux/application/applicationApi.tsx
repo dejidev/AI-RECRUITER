@@ -4,7 +4,7 @@ import type { ApplicationResponse, Application } from "./type-application";
 export const applicationApi = createApi({
     reducerPath: "applicationApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:8080/interface",
+        baseUrl: "https://ai-recruiter-n5t7.onrender.com/interface",
         prepareHeaders: (headers) => {
             const token = localStorage.getItem("token");
             if (token) headers.set("Authorization", token);

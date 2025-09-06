@@ -3,6 +3,13 @@ import { signin, signup } from "../api/auth/auth"; // API functions we created
 import type { AuthCredentials } from "../api/auth/auth_types";
 import { AuthContext } from "./AuthContext";
 
+
+//To clear the redux stuff 
+import { useDispatch } from "react-redux";
+import { jobsApi } from "../redux/jobs/jobsApi";
+import { applicationApi } from "../redux/application/applicationApi";
+import { roleMatchingApi } from "../redux/role-match/rolematching";
+
 type User = {
   id: string;
   email: string;
@@ -14,6 +21,9 @@ type User = {
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
+
+
+  const dispatch = useDispatch();
 
   // Restore user from localStorage on mount
   useEffect(() => {
@@ -95,6 +105,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+
+    // 🔥 Reset RTK Query caches
+    dispatch(jobsApi.util.resetApiState());
+    dispatch(applicationApi.util.resetApiState());
+    dispatch(roleMatchingApi.util.resetApiState());
   };
 
   return (

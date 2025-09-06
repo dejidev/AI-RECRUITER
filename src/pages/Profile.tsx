@@ -1,4 +1,6 @@
-import { useAuth } from "../context/Auth";
+// import { useAuth } from "../context/Auth";
+
+import { useAuth } from "../context/useAuth";
 
 const Profile = () => {
     const { user, signOut } = useAuth();
@@ -8,7 +10,7 @@ const Profile = () => {
     return (
         <div style={{ textAlign: "center" }}>
             <h1>Profile</h1>
-            <p><strong>Name:</strong> {user.name}</p>
+            {/* <p><strong>Name:</strong> {user.name}</p> */}
             <p><strong>Email:</strong> {user.email}</p>
             <button onClick={signOut}>Sign Out</button>
         </div>

@@ -3,7 +3,7 @@ export interface Candidate {
     CandidateId: string;
     name: string;
     title: string | null;
-    email?: string;
+    email: string;
     skills: string[];
     matchScore: number;
 }
@@ -23,7 +23,7 @@ export interface Job {
 
 export interface Application {
     id: number;
-    status: string;
+    status: "applied" | "interview" | "hired" | "rejected"; // strict enum
     notes: string | null;
     appliedAt: string;
     updatedAt: string;

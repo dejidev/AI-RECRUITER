@@ -23,85 +23,85 @@ import { useAuth } from "../context/useAuth";
 
 
 
-const jo_bs = [
-  {
-    id: 1,
-    title: "Product Designer",
-    status: "Open",
-    applicants: 45,
-    date: "2025‑07‑05",
-    department: "Design",
-    location: "Remote",
-    shortlisted: 5,
-    Date_Posted: "June 1, 2025",
-    Deadline: "June 30, 2025",
-    Type: "Fulltime",
-    Experience: "Mid-Level (3-5 years)",
-    Salary_Range: "#350 - #500 / month",
-    Job_ID: "# JD-2025-0013",
-  },
-  {
-    id: 2,
-    title: "Backend Developer",
-    status: "Closed",
-    applicants: 30,
-    date: "2025‑07‑01",
-    department: "Engineering",
-    location: "Lagos",
-  },
-  {
-    id: 3,
-    title: "UI/UX Designer",
-    status: "Draft",
-    applicants: 0,
-    date: "—",
-    department: "Design",
-    location: "Remote",
-  },
-  {
-    id: 4,
-    title: "Product Manager",
-    status: "Open",
-    applicants: 18,
-    date: "2025‑06‑29",
-    department: "Product",
-    location: "Abuja",
-  },
-];
+// const jo_bs = [
+//   {
+//     id: 1,
+//     title: "Product Designer",
+//     status: "Open",
+//     applicants: 45,
+//     date: "2025‑07‑05",
+//     department: "Design",
+//     location: "Remote",
+//     shortlisted: 5,
+//     Date_Posted: "June 1, 2025",
+//     Deadline: "June 30, 2025",
+//     Type: "Fulltime",
+//     Experience: "Mid-Level (3-5 years)",
+//     Salary_Range: "#350 - #500 / month",
+//     Job_ID: "# JD-2025-0013",
+//   },
+//   {
+//     id: 2,
+//     title: "Backend Developer",
+//     status: "Closed",
+//     applicants: 30,
+//     date: "2025‑07‑01",
+//     department: "Engineering",
+//     location: "Lagos",
+//   },
+//   {
+//     id: 3,
+//     title: "UI/UX Designer",
+//     status: "Draft",
+//     applicants: 0,
+//     date: "—",
+//     department: "Design",
+//     location: "Remote",
+//   },
+//   {
+//     id: 4,
+//     title: "Product Manager",
+//     status: "Open",
+//     applicants: 18,
+//     date: "2025‑06‑29",
+//     department: "Product",
+//     location: "Abuja",
+//   },
+// ];
 
 
 
-const myjob = {
-  "status_code": 200,
-  "status": "success",
-  "data": [
-    {
-      "identifier": "15691e86-9a31-404d-817f-7a3aee7832ad",
-      "jobTitle": "Software Engineer Developer",
-      "isActive": true,
-      "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
-      "applicantsCount": 0,
-      "postedAt": "2025-08-27T10:14:44.317Z"
-    },
-    {
-      "identifier": "8afb3eb0-cfe8-4380-b53f-18bbbea5f2ee",
-      "jobTitle": "Backend Developer",
-      "isActive": true,
-      "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
-      "applicantsCount": 0,
-      "postedAt": "2025-08-27T10:03:03.364Z"
-    },
-    {
-      "identifier": "947f786c-dbc8-4580-b197-36ebd791d568",
-      "jobTitle": "Frontend Developer",
-      "isActive": true,
-      "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
-      "applicantsCount": 3,
-      "postedAt": "2025-08-24T16:08:47.136Z"
-    }
-  ],
-  "total": 3
-}
+// const myjob = {
+//   "status_code": 200,
+//   "status": "success",
+//   "data": [
+//     {
+//       "identifier": "15691e86-9a31-404d-817f-7a3aee7832ad",
+//       "jobTitle": "Software Engineer Developer",
+//       "isActive": true,
+//       "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
+//       "applicantsCount": 0,
+//       "postedAt": "2025-08-27T10:14:44.317Z"
+//     },
+//     {
+//       "identifier": "8afb3eb0-cfe8-4380-b53f-18bbbea5f2ee",
+//       "jobTitle": "Backend Developer",
+//       "isActive": true,
+//       "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
+//       "applicantsCount": 0,
+//       "postedAt": "2025-08-27T10:03:03.364Z"
+//     },
+//     {
+//       "identifier": "947f786c-dbc8-4580-b197-36ebd791d568",
+//       "jobTitle": "Frontend Developer",
+//       "isActive": true,
+//       "shortDescription": "We are looking for a skilled Frontend Developer to build responsive web applications using React ...",
+//       "applicantsCount": 3,
+//       "postedAt": "2025-08-24T16:08:47.136Z"
+//     }
+//   ],
+//   "total": 3
+// }
 
 
 

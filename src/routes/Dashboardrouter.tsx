@@ -6,7 +6,7 @@ import Dashboard from "../pages/Dashboard"; // your main dashboard page
 import Settings from "../pages/Settings";
 import DashboardPage from "../pages/Dashboard-prev";
 import Jobs from "../pages/Jobs";
-import Job from "../pages/Job";
+// import Job from "../pages/Job";
 import JobsDetails from "../pages/JobsDetails";
 import CreateJobs from "../pages/CreateJobs";
 import UpdateJobs from "../pages/UpdateJobs";

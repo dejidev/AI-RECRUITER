@@ -16,7 +16,7 @@ const UpdateJobs: React.FC = () => {
     // ✅ get jobId from URL params
     const { id } = useParams<{ id: string }>();
 
-    const { data: job, isLoading, isError } = useGetJobByIdQuery(id!);
+    const { data: job, isLoading } = useGetJobByIdQuery(id!);
     const [updateJob, { isLoading: isUpdating }] = useUpdateJobMutation();
 
 
@@ -39,8 +39,8 @@ const UpdateJobs: React.FC = () => {
         responsibilities: "",
         requirements: "",
         benefits: "",
-        salaryMin: 0,
-        salaryMax: 0,
+        salaryMin: "",
+        salaryMax: "",
         currency: "",
         isActive: true,
     });
@@ -65,8 +65,10 @@ const UpdateJobs: React.FC = () => {
                 responsibilities: job.data.responsibilities ?? "",
                 requirements: job.data.requirements ?? "",
                 benefits: job.data.benefits ?? "",
-                salaryMin: job.data.salaryMin ?? 0,
-                salaryMax: job.data.salaryMax ?? 0,
+                // salaryMin: job.data.salaryMin ?? 0,
+                // salaryMax: job.data.salaryMax ?? 0,
+                salaryMin: job.data.salaryMin !== undefined && job.data.salaryMin !== null ? String(job.data.salaryMin) : "",
+                salaryMax: job.data.salaryMax !== undefined && job.data.salaryMax !== null ? String(job.data.salaryMax) : "",
                 currency: job.data.currency ?? "",
                 isActive: job.data.isActive ?? true,
             });
@@ -79,6 +81,7 @@ const UpdateJobs: React.FC = () => {
 
 
         for (const [key, value] of Object.entries(formData)) {
+            if (key === "isActive") continue; // ✅ skip boolean validation
             if (!value) {
                 alert(`${key} is required ❌`);
                 return;
@@ -86,6 +89,7 @@ const UpdateJobs: React.FC = () => {
         }
 
         // 2. Salary check
+        
         const min = Number(formData.salaryMin);
         const max = Number(formData.salaryMax);
 
@@ -126,7 +130,9 @@ const UpdateJobs: React.FC = () => {
             navigate("/dashboard/jobs")
         } catch (err) {
             console.error("Update failed ❌", err);
-            alert(err?.data?.error || "Update failed");
+            // alert(err?.data?.error || "Update failed");
+            alert("Update failed");
+
         }
     };
 

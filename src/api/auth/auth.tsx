@@ -1,6 +1,6 @@
 import type { AuthCredentials, RawAuthResponse } from "../auth/auth_types";
 
-const API_URL = "http://localhost:8080/interface";
+const API_URL = "https://ai-recruiter-n5t7.onrender.com/interface";
 
 export const signup = async (credentials: AuthCredentials): Promise<RawAuthResponse> => {
     const res = await fetch(`${API_URL}/auth/email/sign-up`, {

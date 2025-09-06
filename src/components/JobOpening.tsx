@@ -4,13 +4,13 @@ import {
 } from "lucide-react";
 import { useGetAllJobsQuery } from "../redux/jobs/jobsApi";
 
-const roleTableData = [
-    { role: "Frontend Developer", users: 12, date: "2025-07-04" },
-    { role: "Backend Developer", users: 9, date: "2025-07-02" },
-    { role: "Product Manager", users: 5, date: "2025-07-01" },
-    { role: "UI/UX Designer", users: 7, date: "2025-06-30" },
-    { role: "QA Engineer", users: 3, date: "2025-06-28" },
-];
+// const roleTableData = [
+//     { role: "Frontend Developer", users: 12, date: "2025-07-04" },
+//     { role: "Backend Developer", users: 9, date: "2025-07-02" },
+//     { role: "Product Manager", users: 5, date: "2025-07-01" },
+//     { role: "UI/UX Designer", users: 7, date: "2025-06-30" },
+//     { role: "QA Engineer", users: 3, date: "2025-06-28" },
+// ];
 
 
 
@@ -18,6 +18,9 @@ const roleTableData = [
 const JobOpening = () => {
 
     const { data: jobs, isLoading: jobsloading } = useGetAllJobsQuery()
+
+
+    console.log(jobsloading)
 
     // console.log(jobs?.data)
 

@@ -1,18 +1,18 @@
 // import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 import { Search, Settings } from "lucide-react";
-import { Button } from "@/components/ui/button"
+import { Button } from "../components/ui/button"
 
 
 export default function DashBoardHeader() {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
-    const handleSignOut = () => {
-        // Add your sign out logic here
-        
-        navigate('/signin')
-    }
+    // const handleSignOut = () => {
+    //     // Add your sign out logic here
+
+    //     navigate('/signin')
+    // }
 
     return (
         <div className="flex flex-col">
