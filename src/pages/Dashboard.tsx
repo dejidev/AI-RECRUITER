@@ -1,3 +1,6 @@
+import "swiper/css";
+import "swiper/css/navigation";
+
 import {
     Home,
     Search,
@@ -19,8 +22,7 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
-import "swiper/css";
-import "swiper/css/navigation";
+
 import PipelineCard from "../components/PipelineCard";
 import JobOpening from "../components/JobOpening";
 import { useGetApplicationsQuery } from "../redux/application/applicationApi";

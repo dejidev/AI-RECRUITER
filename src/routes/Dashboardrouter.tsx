@@ -11,6 +11,10 @@ import JobsDetails from "../pages/JobsDetails";
 import CreateJobs from "../pages/CreateJobs";
 import UpdateJobs from "../pages/UpdateJobs";
 import Candidate from "../pages/Candidate";
+import Matches from "../pages/Matches";
+import Communication from "../pages/Communication";
+import Analytics from "../pages/Analytics";
+import TeamSettings from "../pages/TeamSettings";
 // import SignOutButton from "../components/SignOutButton";
 
 const DashboardRouter = () => {
@@ -28,15 +32,15 @@ const DashboardRouter = () => {
         </Route>
         <Route path="/settings" element={<Settings />} />
         <Route path="/candidates" element={<Candidate />} />
-        <Route path="/matches" element={<div>Matches & Scoring Page</div>} />
+        <Route path="/matches" element={<Matches/>} />
         <Route
           path="/communications"
-          element={<div>Communications Page</div>}
+          element={<Communication/>}
         />
-        <Route path="/analytics" element={<div>Analytics Page</div>} />
+        <Route path="/analytics" element={<Analytics/>} />
         <Route
           path="/teams-settings"
-          element={<div>Teams & Settings Page</div>}
+          element={<TeamSettings/>}
         />
         <Route path="/previous" element={<DashboardPage />} />
         {/* <Route path="/logout" element={<SignOutButton />} /> */}

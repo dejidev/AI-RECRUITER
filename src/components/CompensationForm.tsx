@@ -16,7 +16,7 @@ const CompensationForm: React.FC<Props> = ({ formData, onChange }) => {
                 </label>
                 <input
                     id="salaryMin"
-                    type="number | text"
+                    type="text"
                     placeholder="Enter minimum salary"
                     value={formData.salaryMin}
                     onChange={(e) => onChange("salaryMin", e.target.value)}
@@ -31,7 +31,7 @@ const CompensationForm: React.FC<Props> = ({ formData, onChange }) => {
                 </label>
                 <input
                     id="salaryMax"
-                    type="number | text"
+                    type="text"
                     placeholder="Enter maximum salary"
                     value={formData.salaryMax}
                     onChange={(e) => onChange("salaryMax", e.target.value)}

@@ -166,7 +166,7 @@ export default function DashboardSidebar() {
 
             {/* Confirm Logout Modal */}
             {confirmOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div className="fixed inset-0 bg-black/40 bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
                         <h2 className="text-lg font-semibold mb-2">Are you sure?</h2>
                         <p className="text-gray-600 mb-4">You will be signed out.</p>
