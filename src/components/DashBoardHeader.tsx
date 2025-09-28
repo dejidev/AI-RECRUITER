@@ -6,13 +6,6 @@ import { Button } from "../components/ui/button"
 
 export default function DashBoardHeader() {
 
-    // const navigate = useNavigate()
-
-    // const handleSignOut = () => {
-    //     // Add your sign out logic here
-
-    //     navigate('/signin')
-    // }
 
     return (
         <div className="flex flex-col">

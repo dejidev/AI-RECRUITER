@@ -15,9 +15,10 @@ import {
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/RecritAI_logo.png";
-import { useAuth } from "../context/useAuth";
 
-
+import { useDispatch } from "react-redux";
+import { clearCredentials } from "../redux/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 /* ------------------------------------------------------------------ */
 /*  Nav‑item definitions – feel free to adjust paths / labels later   */
@@ -42,19 +43,18 @@ const FOOTER = [
 
 
 
-
-
-
-
-
 export default function DashboardSidebar() {
     const [open, setOpen] = useState(false); // sidebar state
     const [confirmOpen, setConfirmOpen] = useState(false); // modal state
-    const { signOut } = useAuth();
+
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         setConfirmOpen(false);
-        signOut();
+        dispatch(clearCredentials()); // clears Redux + localStorage
+        navigate("/signin"); // redirect to signin page
     };
 
     const Item = ({
@@ -166,8 +166,8 @@ export default function DashboardSidebar() {
 
             {/* Confirm Logout Modal */}
             {confirmOpen && (
-                <div className="fixed inset-0 bg-black/40 bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
+                <div className="fixed inset-0 bg-black/40 bg-opacity-50 flex items-center justify-center z-50 ">
+                    <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full mx-8">
                         <h2 className="text-lg font-semibold mb-2">Are you sure?</h2>
                         <p className="text-gray-600 mb-4">You will be signed out.</p>
                         <div className="flex justify-end gap-3">

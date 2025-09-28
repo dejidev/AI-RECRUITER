@@ -1,24 +1,16 @@
 import { Search, UserCog, Users } from "lucide-react";
-import { useAuth } from "../context/useAuth";
-
-
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
 
 import ApplicationsBoard from "../components/ApplicationBoard";
-// import { useGetApplicationsQuery } from "../redux/application/applicationApi";
-
-
-
 
 export default function Candidate() {
-  const { user } = useAuth();
+  // 👇 Get user from Redux store
+  const user = useSelector((state: RootState) => state.auth.user);
 
-  // const { data: applicationResponse, isLoading, isError } = useGetApplicationsQuery()
-
-  // console.log(applicationResponse)
   return (
     <div className="px-4 bg-gray-50 min-h-screen">
-
-      <div className="flex items-center justify-between flex-wrap gap-4  py-3 ">
+      <div className="flex items-center justify-between flex-wrap gap-4 py-3">
         {/* Left section: Home title */}
         <div className="flex items-center gap-2 font-semibold text-gray-800">
           <Users size={18} />
@@ -58,25 +50,9 @@ export default function Candidate() {
         </div>
       </div>
 
-
       <section className="mt-16">
-
-
-
-
-
-
-
         <ApplicationsBoard />
-
-
-
-
       </section>
     </div>
-  )
+  );
 }
-
-
-
-

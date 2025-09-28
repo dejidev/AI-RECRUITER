@@ -17,7 +17,7 @@ export default function JobsDetails() {
   // const jobs = job?.data;
 
 
-  console.log(job?.data)
+  // console.log(job?.data)
   const [showJobDescription, setShowJobDescription] = useState<boolean>(false);
 
   if (isLoading) {

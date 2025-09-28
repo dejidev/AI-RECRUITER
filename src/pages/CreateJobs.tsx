@@ -50,8 +50,8 @@ const CreateJobs: React.FC = () => {
         requirements: "",
         benefits: "",
 
-        salaryMin: 0,
-        salaryMax: 0,
+        salaryMin: "",
+        salaryMax: "",
         currency: "",
     });
 

@@ -39,12 +39,12 @@ export default function Header() {
                 </nav>
                 <div className="flex items-center gap-4">
                     <Link to="/signin">
-                        <Button variant="outline" size="sm" className="hidden md:flex">
+                        <Button variant="outline" size="sm" className=" md:flex">
                             Log In
                         </Button>
                     </Link>
 
-                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 hidden md:flex">
                         Request Demo
                     </Button>
                 </div>

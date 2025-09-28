@@ -1,13 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { ApplicationResponse, Application } from "./type-application";
+import type { RootState } from "../store";
 
 export const applicationApi = createApi({
     reducerPath: "applicationApi",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://ai-recruiter-n5t7.onrender.com/interface",
-        prepareHeaders: (headers) => {
-            const token = localStorage.getItem("token");
-            if (token) headers.set("Authorization", token);
+        prepareHeaders: (headers, { getState }) => {
+            // Get token from Redux state instead of localStorage
+            const token = (getState() as RootState).auth.token;
+            if (token) {
+                headers.set("Authorization", token);
+            }
             return headers;
         },
     }),
@@ -30,7 +34,7 @@ export const applicationApi = createApi({
             }),
             invalidatesTags: ["Applications"],
         }),
-        
+
         updateApplication: builder.mutation<
             { message: string }, // adjust to match your backend's success response
             { id: number; status: string }

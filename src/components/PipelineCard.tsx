@@ -62,7 +62,7 @@ export default function PipelineCardsGrid() {
 
 
     return (
-        <div className="w-1/2">
+        <div className="">
             <div className="flex justify-between mb-8 font-semibold">
                 <p>Candidate Pipeline</p>
                 <div className="flex gap-2 items-center text-xs">

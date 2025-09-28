@@ -1,3 +1,4 @@
+//context/auth.tsx
 import { useState, useEffect } from "react";
 import { signin, signup } from "../api/auth/auth"; // API functions we created
 import type { AuthCredentials } from "../api/auth/auth_types";
@@ -120,3 +121,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 // Remove useAuth export from this file. Move it to a new file named useAuth.ts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
